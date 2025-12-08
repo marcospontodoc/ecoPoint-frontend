@@ -1,4 +1,4 @@
-import "../styles/Card.css";
+import "../styles/components/Card.css";
 
 function Card({ status }) {
   const statusLabel = {

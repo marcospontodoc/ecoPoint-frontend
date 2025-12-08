@@ -58,3 +58,7 @@
   align-items: center;
   gap: 10px;
 }
+
+.botao-relatorio:hover {
+  background: #4a8d33;
+}

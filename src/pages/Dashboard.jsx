@@ -1,8 +1,9 @@
-import "../styles/Dashboard.css";
+import "../styles/pages/Dashboard.css";
 import Card from "../components/Card";
 import { FaFileExport } from "react-icons/fa6";
 
 function Dashboard() {
+  
   return (
     <div className="dashboard-container">
       

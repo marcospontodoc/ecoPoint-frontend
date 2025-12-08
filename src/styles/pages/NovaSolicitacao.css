@@ -1,0 +1,40 @@
+.nova-content {
+  padding: 40px 50px;
+  flex-direction: column;
+  margin-right: 50px;
+}
+
+.nova-header p {
+  color: #8A8FB3;
+  font-size: 14px;
+}
+
+.nova-header h1 {
+  font-size: 32px;
+  color: #2B3674;
+  margin-top: 8px;
+  margin-bottom: 30px;
+}
+
+/* Botão */
+.btn-area {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 35px;
+}
+
+.btn-green {
+  background: #6CC24A;
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 30px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.btn-green:hover {
+  background: #5BAA3E;
+}

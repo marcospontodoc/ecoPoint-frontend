@@ -1,4 +1,4 @@
-import "../styles/Home.css";
+import "../styles/pages/Home.css";
 import logo from "../assets/logo_branco.svg";
 
 function Home() {

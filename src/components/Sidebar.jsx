@@ -1,4 +1,4 @@
-import "../styles/Sidebar.css";
+import "../styles/components/Sidebar.css";
 import logo from "../assets/logo.svg";
 import { NavLink } from "react-router-dom";
 import { RiDashboardFill, RiFileAddFill, RiLogoutBoxFill } from "react-icons/ri";

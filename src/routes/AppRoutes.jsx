@@ -3,6 +3,7 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import DashboardLayout from "../layouts/DashboardLayout";
+import NovaSolicitacao from "../pages/NovaSolicitacao";
 
 function AppRoutes() {
   return (
@@ -13,6 +14,7 @@ function AppRoutes() {
       <Route path="/" element={<DashboardLayout />}>
 
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="nova-solicitacao" element={<NovaSolicitacao />} />
 
       </Route>
 
