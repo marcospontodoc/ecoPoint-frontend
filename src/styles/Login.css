@@ -1,0 +1,97 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.login-esquerda {
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.botao-voltar {
+  font-size: 14px;
+  color: #7b8bb1;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 40px;
+}
+
+.botao-voltar:hover {
+  color: #6db51c;
+}
+
+.login-box {
+  max-width: 350px;
+}
+
+h1 {
+  font-size: 32px;
+  color: #2B3674;
+  margin-bottom: 8px;
+}
+
+.descricao {
+  font-size: 14px;
+  color: #7b8bb1;
+  margin-bottom: 30px;
+}
+
+label {
+  font-size: 14px;
+  color: #2B3674;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input {
+  width: 350px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid #e0e6f6;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #2B3674;
+}
+
+.botao-login {
+  width: 100%;
+  padding: 14px;
+  background: #6db51c;
+  color: white;
+  font-size: 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.cadastro {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #7b8bb1;
+}
+
+.cadastro a {
+  color: #6db51c;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-direita {
+  width: 50%;
+  background-image: url('../assets/fundo_login.png');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 0 250px;
+}
+
+.login-logo {
+  width: 650px;
+}

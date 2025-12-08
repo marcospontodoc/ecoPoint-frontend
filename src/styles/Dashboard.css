@@ -1,0 +1,60 @@
+.dashboard-container {
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+}
+
+.dashboard-header p {
+  color: #8A8FB3;
+  font-size: 14px;
+}
+
+.dashboard-header h1 {
+  font-size: 32px;
+  color: #2B3674;
+  margin-top: 8px;
+  margin-bottom: 30px;
+}
+
+.dashboard-colunas {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.coluna {
+  background: #FFF;
+  border-radius: 18px;
+  padding: 20px;
+  width: 350px;
+  min-height: 450px;
+}
+
+.coluna h2 {
+  font-size: 22px;
+  color: #2B3674;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.rodape {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.botao-relatorio {
+  background: #75B51A;
+  color: #FFF;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

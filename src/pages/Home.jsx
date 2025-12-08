@@ -1,6 +1,5 @@
-// src/pages/Home.jsx
 import "../styles/Home.css";
-import logo from "../assets/logo_branco.svg"; // caso queira usar
+import logo from "../assets/logo_branco.svg";
 
 function Home() {
   return (

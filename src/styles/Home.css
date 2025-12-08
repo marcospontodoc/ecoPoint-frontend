@@ -1,7 +1,7 @@
 .home-container {
     height: 100vh;
     width: 100%;
-    background-image: url('../assets/fundo_login.jpg');
+    background-image: url('../assets/fundo_home.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -26,8 +26,7 @@
 
 .botao-branco {
   background: white;
-  color: #75B51A;
-  border: none;
+  color:#75B51A;
   padding: 16px 20px;
   font-size: 18px;
   border-radius: 16px;
