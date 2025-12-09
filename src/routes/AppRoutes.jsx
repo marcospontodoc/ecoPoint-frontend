@@ -1,15 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
 import Dashboard from "../pages/Dashboard";
 import DashboardLayout from "../layouts/DashboardLayout";
 import NovaSolicitacao from "../pages/NovaSolicitacao";
+import LoginColetora from "../pages/LoginColetora";
+import LoginGeradora from "../pages/LoginGeradora";
 
 function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/loginColetora" element={<LoginColetora />} />
+      <Route path="/loginGeradora" element={<LoginGeradora />} />
 
       <Route path="/" element={<DashboardLayout />}>
 
