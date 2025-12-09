@@ -1,33 +1,46 @@
 import "../styles/components/Card.css";
 
-function Card({ status }) {
+function Card({ dados }) {
+
   const statusLabel = {
-    pendente: "PENDENTE",
-    aceita: "ACEITA",
-    coletada: "COLETADA",
-    finalizada: "FINALIZADA",
+    PENDENTE: "PENDENTE",
+    ACEITA: "ACEITA",
+    COLETADA: "COLETADA",
+    FINALIZADA: "FINALIZADA",
   };
 
   const statusColor = {
-    pendente: "#F9A825",     // amarelo
-    aceita: "#43A047",       // verde
-    coletada: "#2962FF",     // azul
-    finalizada: "#BDBDBD",   // cinza
+    PENDENTE: "#F9A825",
+    ACEITA: "#43A047",
+    COLETADA: "#2962FF",
+    FINALIZADA: "#BDBDBD",
   };
+
+  const dataFormatada = dados.dataAgendada || dados.dataSolicitacao;
+
+  const itensLista = dados.itens?.map(i => i.nome)?.join(", ") || "Nenhum item";
+
+  const nomeEmpresa =
+    dados.empresaColetora?.nomeFantasia ||
+    dados.empresaGeradora?.nomeFantasia ||
+    "Sem empresa";
 
   return (
     <div className="card">
-      <h3>Coleta #1</h3>
-      <p className="itens">Plástico, Papel, Vidro</p>
-      <p className="empresa">Empresa X</p>
+      <h3>Coleta #{dados.id}</h3>
+
+      <p className="itens">{itensLista}</p>
+
+      <p className="empresa">{nomeEmpresa}</p>
 
       <div className="footer">
-        <span className="date">00/00/0000 - 00:00</span>
+        <span className="date">{dataFormatada}</span>
+
         <span
           className="status"
-          style={{ backgroundColor: statusColor[status] }}
+          style={{ backgroundColor: statusColor[dados.status] }}
         >
-          {statusLabel[status]}
+          {statusLabel[dados.status]}
         </span>
       </div>
     </div>
