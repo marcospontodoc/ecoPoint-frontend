@@ -2,7 +2,7 @@ import "../styles/pages/Login.css";
 import logo from "../assets/logo_branco.svg";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
-function Login() {
+function LoginColetora() {
   
   return (
     <div className="login-container">
@@ -36,4 +36,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginColetora;

@@ -9,7 +9,8 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
+      <Route path="/loginColetora" element={<LoginColetora />} />
+      <Route path="/loginGeradora" element={<LoginGeradora />} />
 
       <Route path="/" element={<DashboardLayout />}>
 
