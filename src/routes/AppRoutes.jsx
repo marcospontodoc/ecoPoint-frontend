@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
+import LoginGeradora from "../pages/LoginGeradora";
+import LoginColetora from "../pages/LoginColetora";
 import DashboardColetora from "../pages/coletora/DashboardColetora";
+import DashboardGeradora from "../pages/geradora/DashboardGeradora";
 import DashboardLayout from "../layouts/DashboardLayout";
 import NovaSolicitacao from "../pages/geradora/NovaSolicitacao";
 

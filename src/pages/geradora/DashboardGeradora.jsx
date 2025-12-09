@@ -1,4 +1,4 @@
-import "../../styles/pages/coletora/DashboardGeradora.css";
+import "../../styles/pages/geradora/DashboardGeradora.css";
 import Card from "../../components/Card";
 import { FaFileExport } from "react-icons/fa6";
 
