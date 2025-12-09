@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SolicitacaoCard from "../components/SolicitacaoCard";
-import "../styles/pages/NovaSolicitacao.css";
+import SolicitacaoCard from "../../components/SolicitacaoCard";
+import "../../styles/pages/geradora/NovaSolicitacao.css";
 
 function NovaSolicitacao() {
   const [solicitacao, setSolicitacao] = useState({

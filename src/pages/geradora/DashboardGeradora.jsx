@@ -1,8 +1,8 @@
-import "../styles/pages/Dashboard.css";
-import Card from "../components/Card";
+import "../../styles/pages/coletora/DashboardGeradora.css";
+import Card from "../../components/Card";
 import { FaFileExport } from "react-icons/fa6";
 
-function Dashboard() {
+function DashboardGeradora() {
   
   return (
     <div className="dashboard-container">
@@ -56,4 +56,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default DashboardGeradora;
