@@ -1,6 +1,6 @@
 import "../styles/components/Card.css";
 
-function Card({ dados }) {
+function Card({ dados, onClick }) {
 
   const statusLabel = {
     PENDENTE: "PENDENTE",
@@ -21,12 +21,14 @@ function Card({ dados }) {
   const itensLista = dados.itens?.map(i => i.nome)?.join(", ") || "Nenhum item";
 
   const nomeEmpresa =
-    dados.empresaColetora?.nomeFantasia ||
-    dados.empresaGeradora?.nomeFantasia ||
+    dados.empresaColetora?.nome ||
+    dados.empresaGeradora?.nome ||
     "Sem empresa";
 
+    
+
   return (
-    <div className="card">
+    <div className="card" onClick={onClick}>
       <h3>Coleta #{dados.id}</h3>
 
       <p className="itens">{itensLista}</p>

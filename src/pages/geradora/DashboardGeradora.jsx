@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "../../styles/pages/geradora/DashboardGeradora.css";
 import Card from "../../components/Card";
 import { FaFileExport } from "react-icons/fa6";
@@ -7,7 +8,15 @@ function DashboardGeradora() {
   const [solicitacoes, setSolicitacoes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/solicitacao")
+    
+    const geradoraId = localStorage.getItem("geradoraId");
+
+    if (!geradoraId) {
+    console.error("GeradoraId não encontrado! Usuário não logado?");
+    return; // impede continuar se não tiver id
+  }
+
+    fetch(`http://localhost:8080/solicitacao/minhas/${geradoraId}`)
       .then(res => res.json())
       .then(data => {
 

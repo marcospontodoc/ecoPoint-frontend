@@ -16,8 +16,10 @@ function LoginGeradora() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, senha }),
     })
-      .then((res) => {
+      .then(async (res) => {
         if (res.ok) {
+          const data = await res.json(); 
+          localStorage.setItem("geradoraId", data.id); // 
           navigate("/dashboardGeradora");
         } else {
           console.log("Resposta de erro:", res);

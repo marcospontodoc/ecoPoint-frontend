@@ -13,7 +13,7 @@ function Sidebar() {
 
    <nav className="sidebar-menu">
 
-        <NavLink to="/dashboard"
+        <NavLink to="/dashboardGeradora"
             className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
             <RiDashboardFill /> <span>Solicitações</span>
         </NavLink>

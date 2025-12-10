@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import "../../styles/pages/coletora/DashboardColetora.css";
 import Card from "../../components/Card";
 import { FaFileExport } from "react-icons/fa6";
+import PopupSolicitacaoColetora from "./PopupSolicitacaoColetora";
 
 function DashboardColetora() {
 
   const [solicitacoes, setSolicitacoes] = useState([]);
+  const [solicitacaoSelecionada, setSolicitacaoSelecionada] = useState(null);
+  const [popupAberto, setPopupAberto] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:8080/solicitacao")
@@ -24,11 +27,24 @@ function DashboardColetora() {
       .catch(err => console.error("Erro ao buscar solicitações:", err));
   }, []);
 
+    const buscarSolicitacoes = () => {
+    const coletoraId = localStorage.getItem("coletoraId");
+    fetch(`http://localhost:8080/solicitacao/minha/${coletoraId}`)
+      .then(res => res.json())
+      .then(data => setSolicitacoes(data));
+  };
+
+  // Função para abrir popup
+  const abrirPopup = (solicitacao) => {
+    setSolicitacaoSelecionada(solicitacao);
+    setPopupAberto(true);
+  };
+
   return (
     <div className="dashboard-container">
       
       <div className="dashboard-header">
-        <p>Empresa Geradora / Solicitações</p>
+        <p>Empresa Coletora / Solicitações</p>
         <h1>Solicitações</h1>
       </div>
 
@@ -44,6 +60,7 @@ function DashboardColetora() {
                 <Card
                   key={s.id}
                   dados={s}
+                  onClick={() => abrirPopup(s)}
                 />
               ))}
           </div>
@@ -59,6 +76,7 @@ function DashboardColetora() {
                 <Card
                   key={s.id}
                   dados={s}
+                  onClick={() => abrirPopup(s)}
                 />
               ))}
           </div>
@@ -74,6 +92,7 @@ function DashboardColetora() {
                 <Card
                   key={s.id}
                   dados={s}
+                  onClick={() => abrirPopup(s)}
                 />
               ))}
           </div>
@@ -89,6 +108,7 @@ function DashboardColetora() {
                 <Card
                   key={s.id}
                   dados={s}
+                  onClick={() => abrirPopup(s)}
                 />
               ))}
           </div>
@@ -101,6 +121,14 @@ function DashboardColetora() {
           <FaFileExport /> Gerar Relatório
         </button>
       </div>
+
+      
+      <PopupSolicitacaoColetora
+        visible={popupAberto}
+        onClose={() => setPopupAberto(false)}
+        solicitacao={solicitacaoSelecionada}
+        atualizar={buscarSolicitacoes}
+      />
 
     </div>
   );
