@@ -76,7 +76,7 @@ function NovaSolicitacao() {
         </div>
       </div>
 
-      <button onClick={buscarEmpresas}>Buscar Empresas</button>
+      <button className="botao-buscar" onClick={buscarEmpresas}>Buscar Empresas</button>
 
       <div className="infos-grid">
         <div className="info-empresa">

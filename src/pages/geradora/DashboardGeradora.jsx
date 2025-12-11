@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import "../../styles/pages/geradora/DashboardGeradora.css";
 import Card from "../../components/Card";
 import { FaFileExport } from "react-icons/fa6";
+import PopupSolicitacaoGeradora from "./PopupSolicitacaoGeradora";
 
 function DashboardGeradora() {
 
   const [solicitacoes, setSolicitacoes] = useState([]);
+  const [solicitacaoSelecionada, setSolicitacaoSelecionada] = useState(null);
+  const [popupAberto, setPopupAberto] = useState(false);
 
   useEffect(() => {
     
@@ -32,6 +35,19 @@ function DashboardGeradora() {
       .catch(err => console.error("Erro ao buscar solicitações:", err));
   }, []);
 
+    const buscarSolicitacoes = () => {
+    const geradoraId = localStorage.getItem("geradoraId");
+    fetch(`http://localhost:8080/solicitacao/minhas/${geradoraId}`)
+      .then(res => res.json())
+      .then(data => setSolicitacoes(data));
+  };
+
+    // Função para abrir popup
+    const abrirPopup = (solicitacao) => {
+    setSolicitacaoSelecionada(solicitacao);
+    setPopupAberto(true);
+  };
+
   return (
     <div className="dashboard-container">
       
@@ -52,6 +68,7 @@ function DashboardGeradora() {
                 <Card
                   key={s.id}
                   dados={s}
+                  onClick={() => abrirPopup(s)}
                 />
               ))}
           </div>
@@ -97,6 +114,7 @@ function DashboardGeradora() {
                 <Card
                   key={s.id}
                   dados={s}
+                  onClick={() => abrirPopup(s)}
                 />
               ))}
           </div>
@@ -110,7 +128,15 @@ function DashboardGeradora() {
         </button>
       </div>
 
+     <PopupSolicitacaoGeradora
+        visible={popupAberto}
+        onClose={() => setPopupAberto(false)}
+        solicitacao={solicitacaoSelecionada}
+        atualizar={buscarSolicitacoes}
+      />
+
     </div>
+
   );
 }
 

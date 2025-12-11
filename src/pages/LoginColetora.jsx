@@ -16,8 +16,10 @@ function LoginColetora() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, senha }),
     })
-      .then((res) => {
+      .then(async (res) => {
         if (res.ok) {
+          const data = await res.json(); 
+          localStorage.setItem("coletoraId", data.id); // 
           navigate("/dashboardColetora");
         } else {
           console.log("Resposta de erro:", res);

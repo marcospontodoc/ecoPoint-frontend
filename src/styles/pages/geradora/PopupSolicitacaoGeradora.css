@@ -79,33 +79,10 @@
   gap: 12px;
 }
 
-.botao-recusar {
+.botao-deletar {
   border: 1px solid #b71c1c;
   background-color: #FFF;
   color: #b71c1c;
-  width: 250px;
-  padding: 12px;
-  border-radius: 16px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.botao-aceitar {
-  background: #43A047;
-  color: white;
-  width: 250px;
-  border: none;
-  padding: 12px;
-  border-radius: 16px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.botao-coletar {
-  background: #2962FF;
-  color: white;
   width: 250px;
   padding: 12px;
   border-radius: 16px;

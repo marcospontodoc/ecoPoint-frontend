@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../styles/pages/coletora/PopupSolicitacaoColetora.css";
+import { IoCloseCircle } from "react-icons/io5";
 
 function PopupSolicitacaoColetora({ visible, onClose, solicitacao, atualizar }) {
+  
   const [arquivo, setArquivo] = useState(null);
-  const navigate = useNavigate(); // ADICIONE ISSO
+  const navigate = useNavigate();
 
   if (!visible) return null;
 
@@ -56,12 +58,33 @@ function PopupSolicitacaoColetora({ visible, onClose, solicitacao, atualizar }) 
     irParaDashboard();
 };
 
-  return (
-    <div className="popup-overlay">
-      <div className="popup-content">
-        <h2>Coleta #{solicitacao.id}</h2>
-        <p>Status: {solicitacao.status}</p>
+   const statusLabel = {
+    PENDENTE: "PENDENTE",
+    ACEITA: "ACEITA",
+    COLETADA: "COLETADA",
+    FINALIZADA: "FINALIZADA",
+  };
 
+  const statusColor = {
+    PENDENTE: "#F9A825",
+    ACEITA: "#43A047",
+    COLETADA: "#2962FF",
+    FINALIZADA: "#BDBDBD",
+  };
+
+  return (
+    <div className="popup-container">
+      <div className="popup-content">
+        <IoCloseCircle className="botao-fechar" onClick={onClose} />
+        <div className="header">
+        <h2>Coleta #{solicitacao.id}</h2>
+          <span
+          className="status"
+          style={{ backgroundColor: statusColor[solicitacao.status] }}
+        >
+          {statusLabel[solicitacao.status]}
+        </span>
+        </div>
         <h3>Itens</h3>
         <p>{solicitacao.itens.map(i => i.nome).join(", ")}</p>
 
@@ -71,26 +94,25 @@ function PopupSolicitacaoColetora({ visible, onClose, solicitacao, atualizar }) 
         <h3>Data da Coleta</h3>
         <p>{solicitacao.dataAgendada}</p>
 
-        <div className="popup-buttons">
+        <div className="popup-botoes">
           {solicitacao.status === "PENDENTE" && (
             <>
-              <button className="popup-btn cancel" onClick={Recusar}>Recusar solicitação</button>
-              <button className="popup-btn confirm" onClick={Aceitar}>Aceitar solicitação</button>
+              <button className="botao-recusar" onClick={Recusar}>Recusar solicitação</button>
+              <button className="botao-aceitar" onClick={Aceitar}>Aceitar solicitação</button>
             </>
           )}
 
           {solicitacao.status === "ACEITA" && (
-            <button className="popup-btn confirm" onClick={Coletar}>Marcar como coletada</button>
+            <button className="botao-coletar" onClick={Coletar}>Marcar como coletada</button>
           )}
 
           {solicitacao.status === "COLETADA" && (
             <>
               <input type="file" onChange={(e) => setArquivo(e.target.files[0])} />
-              <button className="popup-btn confirm" onClick={Finalizar}>Finalizar</button>
+              <button className="botao-finalizar" onClick={Finalizar}>Finalizar</button>
             </>
           )}
 
-          <button className="popup-btn cancel" onClick={onClose}>Fechar</button>
         </div>
       </div>
     </div>
