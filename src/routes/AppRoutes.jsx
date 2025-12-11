@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import LoginGeradora from "../pages/LoginGeradora";
 import LoginColetora from "../pages/LoginColetora";
@@ -7,26 +7,55 @@ import DashboardGeradora from "../pages/geradora/DashboardGeradora";
 import DashboardLayoutColetora from "../layouts/DashboardLayoutColetora";
 import DashboardLayoutGeradora from "../layouts/DashboardLayoutGeradora";
 import NovaSolicitacao from "../pages/geradora/NovaSolicitacao";
+import ProtectedRoute from "./ProtectedRoute";
 
 function AppRoutes() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/loginColetora" element={<LoginColetora />} />
-      <Route path="/loginGeradora" element={<LoginGeradora />} />
+    <BrowserRouter>
+      <Routes>
 
-      <Route path="/" element={<DashboardLayoutColetora />}>
-        <Route path="dashboardColetora" element={<DashboardColetora />} />
-      </Route>
+        {/* Rotas públicas */}
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/LoginGeradora" element={<LoginGeradora />} />
+        <Route path="/LoginColetora" element={<LoginColetora />} />
 
+        {/* Rotas protegidas*/}
+        <Route
+          path="/dashboardGeradora"
+          element={
+            <ProtectedRoute tipo="geradora">
+              <DashboardLayoutGeradora />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<DashboardGeradora />} />
+        </Route>
 
-      <Route path="/" element={<DashboardLayoutGeradora />}>
-        <Route path="dashboardGeradora" element={<DashboardGeradora />} />
-        <Route path="nova-solicitacao" element={<NovaSolicitacao />} />
-      </Route>
+        <Route
+          path="/nova-solicitacao"
+          element={
+            <ProtectedRoute tipo="geradora">
+              <DashboardLayoutGeradora />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<NovaSolicitacao />} />
+        </Route>
 
-    </Routes>
+        <Route
+          path="/dashboardColetora"
+          element={
+            <ProtectedRoute tipo="coletora">
+              <DashboardLayoutColetora />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<DashboardColetora />} />
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
   );
 }
 

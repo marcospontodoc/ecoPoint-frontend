@@ -14,27 +14,24 @@ function DashboardColetora() {
     fetch("http://localhost:8080/solicitacao")
       .then(res => res.json())
       .then(data => {
-
-        // Ordenar pela data (dataAgendada se existir, senão dataSolicitacao)
         const ordenadas = data.sort((a, b) => {
-          const dataA = new Date(a.dataAgendada || a.dataSolicitacao);
-          const dataB = new Date(b.dataAgendada || b.dataSolicitacao);
-          return dataB - dataA; // mais recentes primeiro
+        const dataA = new Date(a.dataAgendada || a.dataSolicitacao);
+        const dataB = new Date(b.dataAgendada || b.dataSolicitacao);
+        return dataB - dataA;
         });
-
         setSolicitacoes(ordenadas);
-      })
+   })
       .catch(err => console.error("Erro ao buscar solicitações:", err));
-  }, []);
+      }, []);
 
-    const buscarSolicitacoes = () => {
+  const buscarSolicitacoes = () => {
     const coletoraId = localStorage.getItem("coletoraId");
     fetch(`http://localhost:8080/solicitacao/minha/${coletoraId}`)
       .then(res => res.json())
       .then(data => setSolicitacoes(data));
   };
 
-  // Função para abrir popup
+
   const abrirPopup = (solicitacao) => {
     setSolicitacaoSelecionada(solicitacao);
     setPopupAberto(true);
@@ -116,13 +113,6 @@ function DashboardColetora() {
 
       </div>
 
-      <div className="rodape">
-        <button className="botao-relatorio">
-          <FaFileExport /> Gerar Relatório
-        </button>
-      </div>
-
-      
       <PopupSolicitacaoColetora
         visible={popupAberto}
         onClose={() => setPopupAberto(false)}

@@ -5,12 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function LoginGeradora() {
-  const navigate = useNavigate(); // método do react-router
-  const [email, setEmail] = useState(""); // armazena email em tempo real
-  const [senha, setSenha] = useState(""); // armazena senha em tempo real
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
 
   function logar(e) {
-    e.preventDefault(); // evita reload da página
+    e.preventDefault();
     fetch("http://localhost:8080/EmpresaGeradora/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -19,7 +19,7 @@ function LoginGeradora() {
       .then(async (res) => {
         if (res.ok) {
           const data = await res.json(); 
-          localStorage.setItem("geradoraId", data.id); // 
+          localStorage.setItem("geradoraId", data.id); 
           navigate("/dashboardGeradora");
         } else {
           console.log("Resposta de erro:", res);
@@ -37,8 +37,6 @@ function LoginGeradora() {
 
           <h1>Faça login</h1>
           <p className="descricao">Coloque seu e-mail e sua senha para fazer login</p>
-
-          {/* formulário chama logar no submit */}
           <form onSubmit={logar}>
             <label>E-mail</label>
             <input

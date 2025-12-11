@@ -4,34 +4,34 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { RiDashboardFill, RiFileAddFill, RiLogoutBoxFill } from "react-icons/ri";
 
 function Sidebar() {
-  const navigate = useNavigate();
 
-  function Logout() {
+  function handleLogout() {
+    localStorage.removeItem("coletoraId");
     localStorage.removeItem("geradoraId");
-    navigate("/home");
+      window.location.href = "/home"; 
   }
-  
+
   return (
     <aside className="sidebar">
-
       <div className="sidebar-logo">
         <img src={logo} alt="EcoPoint" />
-      </div>
+    </div>
 
-   <nav className="sidebar-menu">
+    <nav className="sidebar-menu">
 
-      <NavLink to="/dashboardColetora"
-        className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
-        <RiDashboardFill /> <span>Solicitações</span>
-      </NavLink>
+    <NavLink
+      to="/dashboardColetora"
+        className={({ isActive }) =>
+          isActive ? "menu-item active" : "menu-item"
+        }
+      >
+      <RiDashboardFill /> <span>Solicitações</span>
+    </NavLink>
 
-      <NavLink to="/home"
-        className="menu-item" onClick={Logout}>
+      <button className="menu-item logout-btn" onClick={handleLogout}>
         <RiLogoutBoxFill /> <span>Sair</span>
-      </NavLink>
-
-      </nav>
-
+      </button>
+    </nav>
     </aside>
   );
 }

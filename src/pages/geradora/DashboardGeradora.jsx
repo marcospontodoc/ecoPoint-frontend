@@ -16,18 +16,17 @@ function DashboardGeradora() {
 
     if (!geradoraId) {
     console.error("GeradoraId não encontrado! Usuário não logado?");
-    return; // impede continuar se não tiver id
+    return; 
   }
 
     fetch(`http://localhost:8080/solicitacao/minhas/${geradoraId}`)
       .then(res => res.json())
       .then(data => {
 
-        // Ordenar pela data (dataAgendada se existir, senão dataSolicitacao)
         const ordenadas = data.sort((a, b) => {
           const dataA = new Date(a.dataAgendada || a.dataSolicitacao);
           const dataB = new Date(b.dataAgendada || b.dataSolicitacao);
-          return dataB - dataA; // mais recentes primeiro
+          return dataB - dataA; 
         });
 
         setSolicitacoes(ordenadas);
@@ -42,7 +41,6 @@ function DashboardGeradora() {
       .then(data => setSolicitacoes(data));
   };
 
-    // Função para abrir popup
     const abrirPopup = (solicitacao) => {
     setSolicitacaoSelecionada(solicitacao);
     setPopupAberto(true);

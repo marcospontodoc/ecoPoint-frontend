@@ -35,6 +35,11 @@
   font-weight: 500;
 }
 
+.botao-branco:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 .botao-outline {
   background: transparent;
   border: 2px solid white;
@@ -45,4 +50,9 @@
   cursor: pointer;
   width: 100%;
   font-weight: 500;
+}
+
+.botao-outline:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }

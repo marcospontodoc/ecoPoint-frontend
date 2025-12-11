@@ -23,23 +23,16 @@ function PopupSolicitacaoGeradora({ visible, onClose, solicitacao, atualizar }) 
 
 const Baixar = () => {
   fetch(`http://localhost:8080/certificados/${solicitacao.id}/download`)
-    .then(response => response.blob()) // pega o PDF como blob
+    .then(response => response.blob())
     .then(blob => {
-      // cria uma URL temporária
       const url = window.URL.createObjectURL(blob);
-
-      // cria link para download
       const a = document.createElement("a");
       a.href = url;
-      a.download = "certificado.pdf"; // nome padrão do arquivo
+      a.download = "certificado.pdf"; 
       document.body.appendChild(a);
       a.click();
-
-      // remove o link e libera memória
       a.remove();
       window.URL.revokeObjectURL(url);
-
-      // se quiser atualizar depois:
       atualizar();
       onClose();
       irParaDashboard();

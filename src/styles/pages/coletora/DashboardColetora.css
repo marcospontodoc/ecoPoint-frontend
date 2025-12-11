@@ -46,19 +46,4 @@
   margin-top: 40px;
 }
 
-.botao-relatorio {
-  background: #75B51A;
-  color: #FFF;
-  padding: 12px 28px;
-  border-radius: 12px;
-  font-size: 16px;
-  cursor: pointer;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 
-.botao-relatorio:hover {
-  background: #4a8d33;
-}

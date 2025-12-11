@@ -50,7 +50,7 @@ function PopupSolicitacaoColetora({ visible, onClose, solicitacao, atualizar }) 
 
     await fetch(`http://localhost:8080/solicitacao/${solicitacao.id}/certificado`, { 
       method: "POST",
-      body: formData, // NÃO definir headers Content-Type quando usa FormData
+      body: formData,
     });
 
     await atualizar();
