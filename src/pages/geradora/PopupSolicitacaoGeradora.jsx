@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/pages/geradora/PopupSolicitacaoGeradora.css";
 import { IoCloseCircle } from "react-icons/io5";
+import { FaDownload } from "react-icons/fa";
 
 function PopupSolicitacaoGeradora({ visible, onClose, solicitacao, atualizar }) {
   const navigate = useNavigate(); 
@@ -19,6 +20,34 @@ function PopupSolicitacaoGeradora({ visible, onClose, solicitacao, atualizar }) 
         irParaDashboard();
       });
   };
+
+const Baixar = () => {
+  fetch(`http://localhost:8080/certificados/${solicitacao.id}/download`)
+    .then(response => response.blob()) // pega o PDF como blob
+    .then(blob => {
+      // cria uma URL temporária
+      const url = window.URL.createObjectURL(blob);
+
+      // cria link para download
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "certificado.pdf"; // nome padrão do arquivo
+      document.body.appendChild(a);
+      a.click();
+
+      // remove o link e libera memória
+      a.remove();
+      window.URL.revokeObjectURL(url);
+
+      // se quiser atualizar depois:
+      atualizar();
+      onClose();
+      irParaDashboard();
+    })
+    .catch(err => {
+      console.error("Erro ao baixar certificado:", err);
+    });
+};
 
      const statusLabel = {
     PENDENTE: "PENDENTE",
@@ -62,6 +91,12 @@ function PopupSolicitacaoGeradora({ visible, onClose, solicitacao, atualizar }) 
           {solicitacao.status === "PENDENTE" && (
             <>
               <button className="botao-deletar" onClick={Deletar}>Deletar solicitação</button>
+            </>
+          )}
+
+          {solicitacao.status === "FINALIZADA" && (
+            <>
+              <button className="botao-download" onClick={Baixar}>Baixar Certificado <FaDownload /></button>
             </>
           )}
 

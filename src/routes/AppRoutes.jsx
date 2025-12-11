@@ -11,6 +11,7 @@ import NovaSolicitacao from "../pages/geradora/NovaSolicitacao";
 function AppRoutes() {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/loginColetora" element={<LoginColetora />} />
       <Route path="/loginGeradora" element={<LoginGeradora />} />
