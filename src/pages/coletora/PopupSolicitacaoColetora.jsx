@@ -1,42 +1,60 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/pages/coletora/PopupSolicitacaoColetora.css";
 
 function PopupSolicitacaoColetora({ visible, onClose, solicitacao, atualizar }) {
   const [arquivo, setArquivo] = useState(null);
+  const navigate = useNavigate(); // ADICIONE ISSO
 
   if (!visible) return null;
+
+  const irParaDashboard = () => {
+    navigate("/dashboardColetora");
+  };
 
   const Aceitar = () => {
     fetch(`http://localhost:8080/solicitacao/${solicitacao.id}/aceitar`, { method: "PUT" })
       .then(() => atualizar())
-      .finally(() => onClose());
+      .finally(() => {
+        onClose();
+        irParaDashboard();
+      });
   };
 
   const Recusar = () => {
     fetch(`http://localhost:8080/solicitacao/${solicitacao.id}/recusar`, { method: "PUT" })
       .then(() => atualizar())
-      .finally(() => onClose());
+      .finally(() => {
+        onClose();
+        irParaDashboard();
+      });
   };
 
   const Coletar = () => {
     fetch(`http://localhost:8080/solicitacao/${solicitacao.id}/coletar`, { method: "PUT" })
       .then(() => atualizar())
-      .finally(() => onClose());
+      .finally(() => {
+        onClose();
+        irParaDashboard();
+      });
   };
 
-  const Finalizar = () => {
-    if (!arquivo) return alert("Selecione um arquivo de certificado!");
-    const formData = new FormData();
-    formData.append("arquivo", arquivo);
-    formData.append("tipo", "Certificado de Coleta");
+  const Finalizar = async () => {
+  if (!arquivo) return alert("Selecione um arquivo de certificado!");
 
-    fetch(`http://localhost:8080/solicitacao/${solicitacao.id}/certificado`, {
+  const formData = new FormData();
+  formData.append("arquivo", arquivo);
+  formData.append("tipo", "Certificado de Coleta");
+
+    await fetch(`http://localhost:8080/solicitacao/${solicitacao.id}/certificado`, { 
       method: "POST",
-      body: formData,
-    })
-      .then(() => atualizar())
-      .finally(() => onClose());
-  };
+      body: formData, // NÃO definir headers Content-Type quando usa FormData
+    });
+
+    await atualizar();
+    onClose();
+    irParaDashboard();
+};
 
   return (
     <div className="popup-overlay">

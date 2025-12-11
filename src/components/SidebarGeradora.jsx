@@ -23,7 +23,7 @@ function Sidebar() {
             <RiFileAddFill /> <span>Nova Solicitação</span>
         </NavLink>
 
-        <NavLink to="/login"
+        <NavLink to="/home"
             className={({ isActive }) => isActive ? "menu-item active" : "menu-item"}>
             <RiLogoutBoxFill /> <span>Sair</span>
         </NavLink>
